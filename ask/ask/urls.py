@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     url(r'^ask$', 'qa.views.test', 		name='ask'),
     url(r'^popular$', 'qa.views.test', 		name='popular'),
     url(r'^new$', 'qa.views.test', 		name='new'),
-    url(r'^question/P?<qid>$', 'qa.views.test', name='question'),
+    url(r'^question/(?P<qid>[0-9]+)/$', 'qa.views.test', name='question'),
 
     url(r'^admin/', include(admin.site.urls)),
 )
