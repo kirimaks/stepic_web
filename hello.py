@@ -1,9 +1,5 @@
 def app(env, make_response):
 
-    #qs = env['QUERY_STRING']
-	
-    #results = str(type(qs.split("&")))
-
     results = ""
 
     for arg in env['QUERY_STRING'].split("&"):
