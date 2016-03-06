@@ -2,7 +2,11 @@ clear
 
 # Git.
 echo "\n*** Make gitcongig ***"
-ln -s ~/web/gitconfig ~/.gitconfig 
+#ln -s ~/web/gitconfig ~/.gitconfig 
+git_config="$HOME/.gitconfig"
+if [ -z $git_config ]; then
+	ln -s $HOME/web/gitconfig $HOME/.gitconfig
+fi
 
 # Nginx.
 echo "\n*** Configure nginx ***"
