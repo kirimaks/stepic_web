@@ -17,13 +17,11 @@ sudo /etc/init.d/gunicorn restart
 
 # Mysql
 echo "\n*** Configure Mysql ***"
-#echo "\tDrop table"
-#sudo mysql -uroot -e "drop database if exists stepic;"
 echo "\tCreate table"
 sudo mysql -uroot -e "CREATE DATABASE IF NOT EXISTS stepic;"
 echo "\tCreate user"
-sudo mysql -uroot -e "create user 'kirimaks'@'localhost' identified by '1234';"
+sudo mysql -uroot -e "CREATE USER 'kirimaks'@'localhost' IDENTIFIED BY '1234';"
 echo "\tChange privileges"
-sudo mysql -uroot -e "grant all privileges on stepic to kirimaks;"
+sudo mysql -uroot -e "GRANT ALL PRIVILEGES ON stepic.* to 'kirimaks'@'localhost';"
 echo "\tFlush privileges"
-sudo mysql -uroot -e "flush privileges;"
+sudo mysql -uroot -e "FLUSH PRIVILEGES;"
