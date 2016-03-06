@@ -7,11 +7,11 @@ class Question(models.Model):
 	text  	 = models.TextField()
 	added_at = models.DateTimeField()
 	rating   = models.BigIntegerField()
-	author   = models.PrimaryKey(User)
+	author   = models.ForeignKey(User)
 	likes    = models.ManyToManyField()
 
 class Answer(models.Model):
 	text     = models.TextField()
 	added_at = models.DateTimeField()
-	question = PrimaryKey(Question)
+	question = ForeignKey(Question)
 	author   = models.PrimaryKey(User)

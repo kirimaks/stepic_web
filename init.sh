@@ -36,3 +36,5 @@ echo "\tChange privileges"
 sudo mysql -uroot -e "GRANT ALL PRIVILEGES ON stepic.* to 'kirimaks'@'localhost';"
 echo "\tFlush privileges"
 sudo mysql -uroot -e "FLUSH PRIVILEGES;"
+
+
