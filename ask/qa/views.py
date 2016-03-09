@@ -1,4 +1,4 @@
-from django.shortcuts 		import render
+from django.shortcuts 		import render, get_object_or_404
 from django.http 		import HttpResponse
 from qa.models 			import Question
 from django.core.paginator 	import Paginator
@@ -8,8 +8,7 @@ def test(request, *args, **kwargs):
 	return HttpResponse("OK")
 
 def home(request):
-	query_set 	= Question.objects.all().order_by("added_at")
-	questions_list 	= get_or_404(Question, query_set)
+	questions_list  = Question.objects.all().order_by("added_at")
 	page_num 	= request.GET.get("page", 1)
 	paginator 	= Paginator(questions_list, 10)
 	cur_page 	= paginator.page(page_num)
@@ -23,8 +22,7 @@ def home(request):
 	
 
 def best(request):
-	query_set 	= Question.objects.all().order_by("rating")
-	questions_list 	= get_or_404(Question, query_set)
+	questions_list 	= Question.objects.all().order_by("rating")
 	page_num 	= request.GET.get("page", 1)
 	paginator 	= Paginator(questions_list, 10)
 	cur_page 	= paginator.page(page_num)
