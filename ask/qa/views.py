@@ -8,16 +8,31 @@ def test(request, *args, **kwargs):
 	return HttpResponse("OK")
 
 def home(request):
-	questions_list 	= Question.objects.all().order_by("added_at")
+	query_set 	= Question.objects.all().order_by("added_at")
+	questions_list 	= get_or_404(Question, query_set)
 	page_num 	= request.GET.get("page", 1)
 	paginator 	= Paginator(questions_list, 10)
 	cur_page 	= paginator.page(page_num)
 	
-
 	context = dict(
 		cur_page  = cur_page,
 		paginator = paginator,
 	)
 	
 	return render(request, "qa/home.html", context)
+	
+
+def best(request):
+	query_set 	= Question.objects.all().order_by("rating")
+	questions_list 	= get_or_404(Question, query_set)
+	page_num 	= request.GET.get("page", 1)
+	paginator 	= Paginator(questions_list, 10)
+	cur_page 	= paginator.page(page_num)
+	
+	context = dict(
+		cur_page  = cur_page,
+		paginator = paginator,
+	)
+	
+	return render(request, "qa/best.html", context)
 	
