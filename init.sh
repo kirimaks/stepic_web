@@ -10,7 +10,7 @@ fi
 # Nginx.
 echo "\n*** Configure nginx ***"
 old_config="/etc/nginx/sites-enabled/default"
-if [ -f $old_config ]; then rm $old_config; fi
+if [ -f $old_config ]; then sudo rm $old_config; fi
 new_config="/etc/nginx/sites-enabled/test.conf"
 if [ ! -f $new_config ]; then
 	sudo ln -s /home/box/web/etc/nginx.conf $new_config 

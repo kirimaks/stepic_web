@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		Home page
+	</title>
+</head>
+<body>
+	{% for question in questions_list %}
+		<h3>{{ question.title }}</h3>
+		<p>{{ question.text }}</p>
+	{% endfor %}
+</body>
+</html>
