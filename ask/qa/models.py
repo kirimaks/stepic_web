@@ -10,6 +10,9 @@ class Question(models.Model):
 	author   = models.ForeignKey(User, related_name='+')
 	likes    = models.ManyToManyField(User)
 
+	def get_url(self):
+		return "/full/path/to/question"
+
 class Answer(models.Model):
 	text     = models.TextField()
 	added_at = models.DateTimeField()

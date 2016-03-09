@@ -8,7 +8,7 @@
 <body>
 	{% for question in questions_list %}
 		<h3>{{ question.title }}</h3>
-		<p>{{ question.text }}</p>
+		<p>{{ question.text }} <span>{{ question.get_url }}</span></p>
 	{% endfor %}
 </body>
 </html>
