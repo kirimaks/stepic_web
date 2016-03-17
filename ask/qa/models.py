@@ -6,7 +6,7 @@ class Question(models.Model):
 	title    = models.CharField(max_length=100)
 	text  	 = models.TextField()
 	added_at = models.DateTimeField(auto_now_add=True)
-	rating   = models.BigIntegerField()
+	rating   = models.BigIntegerField(default=0)
 	author   = models.ForeignKey(User, related_name='+')
 	likes    = models.ManyToManyField(User)
 
@@ -15,6 +15,6 @@ class Question(models.Model):
 
 class Answer(models.Model):
 	text     = models.TextField()
-	added_at = models.DateTimeField()
+	added_at = models.DateTimeField(auto_now_add=True)
 	question = models.ForeignKey(Question)
 	author   = models.ForeignKey(User)
