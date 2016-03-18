@@ -14,8 +14,9 @@ def home(request):
 	cur_page 	= paginator.page(page_num)
 	
 	context = dict(
-		cur_page  = cur_page,
-		paginator = paginator,
+		questions_list 	= questions_list,
+		cur_page  	= cur_page,
+		paginator 	= paginator,
 	)
 	
 	return render(request, "qa/home.html", context)
