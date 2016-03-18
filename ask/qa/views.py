@@ -34,3 +34,6 @@ def best(request):
 	
 	return render(request, "qa/best.html", context)
 	
+def question(request, qid):
+	question = get_object_or_404(Question, pk=qid)
+	return HttpResponse("OK")
