@@ -1,4 +1,5 @@
 from django import forms
+from qa.models import Question
 
 class AskForm(forms.Form):
 	title = forms.CharField()
