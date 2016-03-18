@@ -6,9 +6,9 @@
 	</title>
 </head>
 <body>
-	{% for question in questions_list %}
+	{% for question in cur_page %}
 		<h3>{{ question.title }}</h3>
-		<p>{{ question.text }}</p>
+		<p>{{ question.text }} <a href="/question/{{ question.id }}">Link</a></p>
 	{% endfor %}
 </body>
 </html>
