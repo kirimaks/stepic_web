@@ -22,7 +22,7 @@ def home(request):
 	
 
 def best(request):
-	questions_list 	= Question.objects.all().order_by("rating")
+	questions_list 	= Question.objects.all().order_by("-rating")
 	page_num 	= request.GET.get("page", 1)
 	paginator 	= Paginator(questions_list, 10)
 	cur_page 	= paginator.page(page_num)
@@ -36,4 +36,5 @@ def best(request):
 	
 def question(request, qid):
 	question = get_object_or_404(Question, pk=qid)
-	return HttpResponse("OK")
+	#return HttpResponse("OK")
+	return render(request, "qa/question.html", { "question" : question })
