@@ -2,6 +2,7 @@ from django.shortcuts 		import render, get_object_or_404
 from django.http 		import HttpResponse
 from qa.models 			import Question
 from django.core.paginator 	import Paginator
+from qa.forms 			import AskForm
 
 
 def test(request, *args, **kwargs):
@@ -36,5 +37,8 @@ def best(request):
 	
 def question(request, qid):
 	question = get_object_or_404(Question, pk=qid)
-	#return HttpResponse("OK")
 	return render(request, "qa/question.html", { "question" : question })
+
+def ask(request):
+	form = AskForm()
+	return render(request, "qa/ask.html", { "form" : form })
