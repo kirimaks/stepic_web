@@ -40,5 +40,11 @@ def question(request, qid):
 	return render(request, "qa/question.html", { "question" : question })
 
 def ask(request):
-	form = AskForm()
-	return render(request, "qa/ask.html", { "form" : form })
+	if request.method == "POST":
+		form = AskForm(request.POST):
+		if form.is_valid():
+			url = form.save_and_get_url()
+			return HttpResponseRedirect(url)
+	else:
+		form = AskForm()
+		return render(request, "qa/ask.html", { "form" : form })
