@@ -42,4 +42,4 @@ echo "\t*** Create database ***"
 python ask/manage.py syncdb --noinput
 # Create superuser.
 echo "\t*** Create superuser ***"
-python manage.py createsuperuser --username=kirimaks --email=kirimaks@yahoo.com
+python ask/manage.py createsuperuser --username=kirimaks --email=kirimaks@yahoo.com
