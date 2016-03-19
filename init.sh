@@ -39,4 +39,7 @@ sudo mysql -uroot -e "FLUSH PRIVILEGES;"
 
 # Craete database.
 echo "\t*** Create database ***"
-python ask/manage.py syncdb
+python ask/manage.py syncdb --noinput
+# Create superuser.
+echo "\t*** Create superuser ***"
+python manage.py createsuperuser --username=kirimaks --email=kirimaks@yahoo.com
