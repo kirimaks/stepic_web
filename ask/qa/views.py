@@ -2,7 +2,7 @@ from django.shortcuts 		import render, get_object_or_404
 from django.http 		import HttpResponse, HttpResponseRedirect
 from qa.models 			import Question
 from django.core.paginator 	import Paginator
-from qa.forms 			import AskForm, SignUpForm
+from qa.forms 			import AskForm, SignUpForm, LogInForm
 
 
 def test(request, *args, **kwargs):
@@ -60,4 +60,19 @@ def signup(request):
 	else:
 		form = SignUpForm()
 		return render(request, "qa/signup.html", { "form" : form })
+
+
+def login(request):
+	if request.method == "POST":
+		form = LogInForm(request.POST)
+		if form.is_valid():
+			if form.log_user_in(request):
+				return HttpResponseRedirect("/")
+			else:
+				# Form with errors.
+				return render(request, "qa/login.html", { "form" : form })
+		
+	else:
+		form = LogInForm()
+		return render(request, "qa/login.html", { "form" : form })
 

@@ -41,3 +41,19 @@ class SignUpForm(forms.Form):
  		       )
 		if user:
 			login(request, user)
+
+class LogInForm(forms.Form):
+	username = forms.CharField()
+	password = forms.CharField(widget=forms.PasswordInput)
+
+	def log_user_in(self, request):
+		user = authenticate(
+			username=self.cleaned_data['username'],
+			password=self.cleaned_data['password'],		
+ 		       )
+		if user:
+			login(request, user)
+			return True
+		else:
+			return False
+
