@@ -7,11 +7,12 @@ class AskForm(forms.Form):
 	title = forms.CharField()
 	text  = forms.CharField(widget=forms.Textarea)
 
-	def save_and_get_url(self):
+	def save_and_get_url(self, cur_user):
 		new_qs = Question(
 				text=self.cleaned_data['text'], 
 				title=self.cleaned_data['title'],
-				author=User.objects.all()[0]
+				#author=User.objects.all()[0]
+				author=cur_user
 		)
 		new_qs.save()
 
