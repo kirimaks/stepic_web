@@ -2,7 +2,7 @@ from django.shortcuts 		import render, get_object_or_404
 from django.http 		import HttpResponse, HttpResponseRedirect
 from qa.models 			import Question
 from django.core.paginator 	import Paginator
-from qa.forms 			import AskForm
+from qa.forms 			import AskForm, SignUpForm
 
 
 def test(request, *args, **kwargs):
@@ -48,3 +48,16 @@ def ask(request):
 	else:
 		form = AskForm()
 		return render(request, "qa/ask.html", { "form" : form })
+
+
+def signup(request):
+	if request.method == "POST":
+		form = SignUpForm(request.POST)
+		if form.is_valid():
+			form.create_user()
+			form.log_user_in(request)
+			return HttpResponseRedirect("/")
+	else:
+		form = SignUpForm()
+		return render(request, "qa/signup.html", { "form" : form })
+
